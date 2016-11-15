@@ -1,0 +1,11 @@
+<h1>Projects</h1>
+<ul>
+<% @projects.each do |project| %>
+<li>
+	<%= project.name %>
+	<% if project.description.present? %> <!-- si no tiene descripción (sea nil o string vacío) no la pone -->
+	- <%= project.description %>
+	<% end %>
+	</li>
+<% end %>
+</ul>
