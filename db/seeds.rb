@@ -5,3 +5,11 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+Project.create!(name: 'Ironhack', description: 'Ironhack is a...')
+Project.create!(name: 'Time tracking app')
+Project.create!(name: 'Recipes', description: 'Track my favourite recipes')
+
+1.upto(10).each do |i| # (1..10).each do |i|
+	Project.create!(name: "Ironhack #{i}", description: "description #{i}")
+end
