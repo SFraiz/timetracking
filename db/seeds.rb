@@ -11,5 +11,6 @@ Project.create!(name: 'Time tracking app')
 Project.create!(name: 'Recipes', description: 'Track my favourite recipes')
 
 1.upto(10).each do |i| # (1..10).each do |i|
-	Project.create!(name: "Ironhack #{i}", description: "description #{i}")
+	project = Project.create!(name: "Ironhack #{i}", description: "description #{i}")
+	project.time_entries.create(minutes: rand(1..60), hours: rand(0..2))
 end
