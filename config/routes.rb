@@ -12,4 +12,6 @@ get 'projects/new', to: 'projects#new'
 get '/projects/:id', to: 'projects#show' #tenemos que poner las rutas por encima para que no confunda con parametros
 
 post '/projects', to: 'projects#create' #lo podemos poner debajo porqué es un post
+
+get '/projects/:project_id/time_entries', to: 'time_entries#index'
 end
