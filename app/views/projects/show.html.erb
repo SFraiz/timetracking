@@ -1,0 +1,5 @@
+<h1>My project <%= @project.id %> </h1>
+<%= @project.name %> 
+<% if @project.description.present? %>
+	- <%= @project.description %>
+<% end %>
