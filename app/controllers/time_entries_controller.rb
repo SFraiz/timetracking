@@ -12,6 +12,7 @@ class TimeEntriesController < ApplicationController
 	def create
 		@project = Project.find(params[:project_id])
 		@entry = @project.time_entries.new(entry_params)
+		
 		if @entry.save
 			redirect_to "/projects/#{@project.id}/time_entries"
 		else
@@ -33,6 +34,14 @@ class TimeEntriesController < ApplicationController
 		else
 			render 'edit'
 		end
+	end
+
+	def destroy
+		@project = Project.find_by(id: params[:project_id])
+		@entry = @project.time_entries.find_by(id: params[:id])
+		
+		@entry.destroy #no es obligatorio el if en destroy
+		redirect_to action: :index, project_id: @project.id 
 	end
 
 	private

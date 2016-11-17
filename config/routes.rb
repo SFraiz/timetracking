@@ -6,19 +6,22 @@ get 'contact', to: 'site#contact'
 get '/calculator', to: 'site#calculator'
 post '/calculate', to: 'site#calculate'
 
-get '/projects', to: 'projects#index'
-get 'projects/new', to: 'projects#new'
+#get '/projects', to: 'projects#index'
+#get 'projects/new', to: 'projects#new'
 
-get '/projects/:id', to: 'projects#show' #tenemos que poner las rutas por encima para que no confunda con parametros
+#get '/projects/:id', to: 'projects#show' #tenemos que poner las rutas por encima para que no confunda con parametros
 
-post '/projects', to: 'projects#create' #lo podemos poner debajo porqué es un post
+#post '/projects', to: 'projects#create' #lo podemos poner debajo porqué es un post
+resources :projects, only: [:index, :show, :new, :create] do #nos sustituye todas las rutas projects
+	resources :time_entries, except: [:show] #nos sustiture todas las rutas time_entries asociadas a projects
+end
 
-get '/projects/:project_id/time_entries', to: 'time_entries#index'
-get '/projects/:project_id/time_entries/new', to: 'time_entries#new'
-post '/projects/:project_id/time_entries', to: 'time_entries#create', as: :project_time_entries
+#get '/projects/:project_id/time_entries', to: 'time_entries#index'
+#get '/projects/:project_id/time_entries/new', to: 'time_entries#new'
+#post '/projects/:project_id/time_entries', to: 'time_entries#create', as: :project_time_entries
 
-get '/projects/:project_id/time_entries/:id/edit', to: 'time_entries#edit'
-patch '/projects/:project_id/time_entries/:id', to: 'time_entries#update', as: :project_time_entry #patch para editar
+#get '/projects/:project_id/time_entries/:id/edit', to: 'time_entries#edit'
+#patch '/projects/:project_id/time_entries/:id', to: 'time_entries#update', as: :project_time_entry #patch para editar
 
-delete '/projects/:project_id/time_entries/:id', to: 'time_entries#destroy'
+#delete '/projects/:project_id/time_entries/:id', to: 'time_entries#destroy'
 end
